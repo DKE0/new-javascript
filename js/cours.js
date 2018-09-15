@@ -241,7 +241,7 @@ perso.force = perso.force + 10;
 console.log(perso.decrire());
 */
 
-var compte = {
+/*var compte = {
 solde: 0,
 titulaire: "Alex",
 
@@ -274,7 +274,7 @@ while (isNaN(nbUtil)) ;
 compte.debiter(nbUtil);
 compte.decrire();
 
-
+// retour sur le jeu de role
 
 var perso = {
     
@@ -285,7 +285,6 @@ sante: 150,
 force: 25,
     
 xp: 0,
-    
     
     // Renvoie la description du personnage
     
@@ -299,25 +298,133 @@ decrire: function () {
     
 }
     
+    
 };
 
-
 console.log(perso.decrire());
-
 
 // Aurora est blessée par une flèche
 
 perso.sante = perso.sante - 20;
 
-
 // Aurora trouve un bracelet de force
 
 perso.force = perso.force + 10;
-
 
 // Aurora apprend une nouvelle compétence
 
 perso.xp = perso.xp + 15;
 
+console.log(perso.decrire()); */
 
-console.log(perso.decrire());
+var unObjet = {
+    a : 2
+};
+
+// Crée unAutreObjet avec unObjet comme prototype
+
+var unAutreObjet = Object.create(unObjet);
+
+console.log(unAutreObjet.a);
+unAutreObjet.b = 4;
+console.log(unAutreObjet.b);
+
+var Personnage = {
+    
+// Initialise le personnage
+    
+initPerso: function (nom, sante, force) {
+    
+    this.nom = nom;
+    
+    this.sante = sante;
+    
+    this.force = force;
+    
+}
+    
+    // Attaque un personnage cible
+    
+attaquer: function(cible)
+    {
+        if (this.sante > 0)
+        {
+            var degats = this.force;
+            console.log(this.nom + " attaque " + cible.nom + " et lui fait " + degats + " points de dégâts");
+            cible.sante = cible.sante - degats;
+            if (cible.sante > 0) console.log(cible.nom + " a encore " + cible.sante + " points de vie");
+            else {
+                cible.sante = 0;
+                console.log(cible.nom + " est mort !");
+            }
+        } else console.log(this.nom + " ne peut pas attaquer : il est mort...");
+    }
+    
+};
+
+var joueur = Object.create(Personnage);
+
+// Initialise le joueur
+
+joueur.initJoueur = function(nom, sante, force){
+    this.initPerso(nom, sante, force);
+    this.xp = 0;
+};
+joueur.decrire =  function () {
+    var description = this.nom + " a " + this.sante + " points de vie, " +
+    
+    this.force + " en force et " + this.xp + " points d'expérience";
+    
+    return description;
+};
+
+// combat un adversaire
+
+joueur.combattre = function(adversaire)
+{
+    this.attaquer(adversaire);
+    if (adversaire.sante === 0)
+    {
+        console.log(this.nom + " a tué " + adversaire.nom + " et gagne " +
+                    adversaire.valeur + " points d'expérience");
+        this.xp += adversaire.valeur;
+     }
+}
+
+var adversaire = Object.create(Personnage);
+
+adversaire.initAdversaire = function(nom, sante, force, race, valeur) {
+    this.initPerso(nom,sante,force);
+    this.race = race;
+    this.valeur = valeur;
+};
+
+var joueur1 = Object.create(joueur);
+joueur1.initJoueur("Aurora", 150,25);
+
+var joueur2 = Object.create(joueur);
+joueur2.initJoueur("Gamora", 130, 30);
+
+console.log("Bienvenue dans ce jeu d'aventure ! Voici nos courageux héros :");
+
+console.log(joueur1.decrire());
+
+console.log(joueur2.decrire());
+
+var monstre = Object.create(Adversaire);
+monstre.initAdversaire("ZORG", 40, 20, "Orc", 10);
+
+console.log("Un affreux monstre arrive : c'est un " + monstre.race + " nommé " + monstre.nom);
+
+monstre.attaquer(joueur1);
+monstre.attaquer(joueur2);
+
+joueur1.combattre(monstre);
+joueur2.combattre(monstre);
+
+console.log(joueur1.decrire());
+
+console.log(joueur2.decrire());
+
+
+var

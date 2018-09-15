@@ -31,7 +31,7 @@ console.log(pupuce.nom + " est un " + pupuce.race + " mesurant " + pupuce.taille
 
 console.log("Tiens, un chat ! " + pupuce.nom + " aboie : " + pupuce.aboyer());
 
-
+/*
 var Personnage = {
     
     // Initialise le personnage
@@ -77,6 +77,7 @@ joueur.initJoueur = function(nom, sante, force){
     this.initPerso(nom, sante, force);
 
 };
+
 joueur.decrire =  function () {
     var description = this.nom + " a " + this.sante + " points de vie, " +
     
@@ -134,3 +135,101 @@ joueur2.combattre(monstre);
 console.log(joueur1.decrire());
 
 console.log(joueur2.decrire());
+*/
+
+// programme Comptes bancaires
+
+/*var compte = {
+solde: 0,
+titulaire: "Alex",
+    
+    crediter : function(nbUtil) {
+        this.solde+=nbUtil;
+    },
+    
+debiter: function (nbUtil) {
+    this.solde -=nbUtil;
+},
+    
+    
+}
+
+do
+{
+    nbUtil = Number(prompt(" Montant à crediter "));
+}
+while (isNaN(nbUtil)) ;
+compte.crediter(nbUtil);
+do
+{
+    nbUtil = Number(prompt(" Montant à debiter "));
+}
+while (isNaN(nbUtil)) ;
+
+compte.debiter(nbUtil);
+compte.decrire();
+*/
+
+var CompteBancaire = {
+initCB: function (titulaire, solde)
+    {
+        this.solde+=solde;
+        this.titulaire+=titulaire;
+    },
+    
+    crediter : function(nbUtil) {
+        this.solde+=nbUtil;
+    },
+    
+debiter: function (nbUtil) {
+    this.solde -=nbUtil;
+},
+    
+decrire: function(){
+    console.log("Titulaire : " + this.titulaire + " solde : " + this.solde);
+},
+    
+}
+
+var CompteEpargne = Object.create(CompteBancaire);
+CompteEpargne.initCE = function(titulaire, solde, taux) {
+    this.initCB(titulaire, solde);
+    this.taux += taux;
+    this.ajouterInterets = function() {
+        this.solde+= this.solde*this.taux;
+    };
+};
+
+var compte1 = Object.create(CompteBancaire);
+
+compte1.initCB("Alex", 100);
+
+var compte2 = Object.create(CompteEpargne);
+
+compte2.initCE("Marco", 50, 0.05);
+
+
+console.log("Voici l'état initial des comptes :");
+
+console.log(compte1.decrire());
+
+console.log(compte2.decrire());
+
+
+var montant = Number(prompt("Entrez le montant à transférer entre les comptes :"));
+
+compte1.debiter(montant);
+
+compte2.crediter(montant);
+
+
+// Calcule et ajoute les intérêts au solde du compte
+
+compte2.ajouterInterets();
+
+
+console.log("Voici l'état final des comptes après transfert et calcul des intérêts :");
+
+console.log(compte1.decrire());
+
+console.log(compte2.decrire());

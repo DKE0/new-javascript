@@ -1,4 +1,4 @@
-var Chien = {
+/*var Chien = {
     
 init: function( nom, race, taille )
     {
@@ -30,6 +30,7 @@ pupuce.init("Pupuce", "bichon", 22);
 console.log(pupuce.nom + " est un " + pupuce.race + " mesurant " + pupuce.taille + " cm");
 
 console.log("Tiens, un chat ! " + pupuce.nom + " aboie : " + pupuce.aboyer());
+ */
 
 /*
 var Personnage = {
@@ -168,13 +169,12 @@ while (isNaN(nbUtil)) ;
 
 compte.debiter(nbUtil);
 compte.decrire();
-*/
 
 var CompteBancaire = {
 initCB: function (titulaire, solde)
     {
-        this.solde+=solde;
-        this.titulaire+=titulaire;
+        this.solde=solde;
+        this.titulaire=titulaire;
     },
     
     crediter : function(nbUtil) {
@@ -186,15 +186,15 @@ debiter: function (nbUtil) {
 },
     
 decrire: function(){
-    console.log("Titulaire : " + this.titulaire + " solde : " + this.solde);
-},
-    
+    return "Titulaire : " + this.titulaire + " solde : " + this.solde + " euros";
 }
+    
+};
 
 var CompteEpargne = Object.create(CompteBancaire);
 CompteEpargne.initCE = function(titulaire, solde, taux) {
     this.initCB(titulaire, solde);
-    this.taux += taux;
+    this.taux = taux;
     this.ajouterInterets = function() {
         this.solde+= this.solde*this.taux;
     };
@@ -208,13 +208,11 @@ var compte2 = Object.create(CompteEpargne);
 
 compte2.initCE("Marco", 50, 0.05);
 
-
 console.log("Voici l'état initial des comptes :");
 
 console.log(compte1.decrire());
 
 console.log(compte2.decrire());
-
 
 var montant = Number(prompt("Entrez le montant à transférer entre les comptes :"));
 
@@ -222,14 +220,28 @@ compte1.debiter(montant);
 
 compte2.crediter(montant);
 
-
 // Calcule et ajoute les intérêts au solde du compte
 
 compte2.ajouterInterets();
-
 
 console.log("Voici l'état final des comptes après transfert et calcul des intérêts :");
 
 console.log(compte1.decrire());
 
-console.log(compte2.decrire());
+console.log(compte2.decrire());*/
+
+/*
+var films = ["Game of throne","Vice-Versa","Dracula"];
+
+films.forEach(function(film)
+              {
+                  console.log(film);
+              });
+*/
+
+
+//  programme qui demande un mot et les affiche et qui s'arrette si celui ci est stop des.
+    var userVals = [];
+    do userVals.push(prompt("veuillez entrez un mot une phrase ou stop pour arreter")); while(userVals[userVals.length - 1]!=="stop");
+    for (var i = 0; i<userVals.length - 1; console.log(userVals[i++]));
+

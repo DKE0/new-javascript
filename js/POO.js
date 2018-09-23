@@ -1,5 +1,5 @@
 /*var Chien = {
-    
+
 init: function( nom, race, taille )
     {
         this.nom = nom;
@@ -11,7 +11,7 @@ aboyer: function()
         if (this.race === "mâtin de Naples") return "Grr !  Grr !";
         if (this.race === "bichon") return "Kai ! Kai !";
     }
-    
+
 };
 
 var crokdur = Object.create(Chien);
@@ -34,25 +34,25 @@ console.log("Tiens, un chat ! " + pupuce.nom + " aboie : " + pupuce.aboyer());
 
 /*
 var Personnage = {
-    
+
     // Initialise le personnage
-    
+
 initPerso: function (nom, sante, force) {
-    
+
     this.nom = nom;
-    
+
     this.sante = sante;
-    
+
     this.force = force;
-    
+
     this.xp = 0;
     this.pOr = 10;
     this.nbCle = 1;
-    
+
 },
-    
+
     // Attaque un personnage cible
-    
+
 attaquer: function(cible)
     {
         if (this.sante > 0)
@@ -67,7 +67,7 @@ attaquer: function(cible)
             }
         } else console.log(this.nom + " ne peut pas attaquer : il est mort...");
     }
-    
+
 };
 
 var joueur = Object.create(Personnage);
@@ -81,9 +81,9 @@ joueur.initJoueur = function(nom, sante, force){
 
 joueur.decrire =  function () {
     var description = this.nom + " a " + this.sante + " points de vie, " +
-    
+
     this.force + " en force et " + this.xp + " points d'expérience, " + this.pOr + "pièces d'or et " + this.nbCle + " Clé(s)";
-    
+
     return description;
 };
 
@@ -143,16 +143,16 @@ console.log(joueur2.decrire());
 /*var compte = {
 solde: 0,
 titulaire: "Alex",
-    
+
     crediter : function(nbUtil) {
         this.solde+=nbUtil;
     },
-    
+
 debiter: function (nbUtil) {
     this.solde -=nbUtil;
 },
-    
-    
+
+
 }
 
 do
@@ -176,19 +176,19 @@ initCB: function (titulaire, solde)
         this.solde=solde;
         this.titulaire=titulaire;
     },
-    
+
     crediter : function(nbUtil) {
         this.solde+=nbUtil;
     },
-    
+
 debiter: function (nbUtil) {
     this.solde -=nbUtil;
 },
-    
+
 decrire: function(){
     return "Titulaire : " + this.titulaire + " solde : " + this.solde + " euros";
 }
-    
+
 };
 
 var CompteEpargne = Object.create(CompteBancaire);
@@ -245,3 +245,36 @@ films.forEach(function(film)
     do userVals.push(prompt("veuillez entrez un mot une phrase ou stop pour arreter")); while(userVals[userVals.length - 1]!=="stop");
     for (var i = 0; i<userVals.length - 1; console.log(userVals[i++]));
 
+    var contacts = ["carole lévisse","Mélodie Nelsonne"];
+
+    console.log("Bienvenue dans le gestionnaire des contacts !");
+    console.log("1 : Lister les contacts");
+    console.log("2 : Ajouter un contact");
+    console.log("0 : Quitter");
+    var userVal ;
+    do {
+
+       userVal = Number(prompt(" choisissez une option "));
+      switch (userVal) {
+        case 1:
+        console.log(" Voici la liste de tous vos contacts :");
+        contacts.forEach(function(contact)
+                      {
+                        var contactTab = contact.split(" ");
+                        console.log("Nom : "+contactTab[0]+ ","+"Prénom : "+contactTab[1]);
+                      });
+                      console.log("\n");
+        break;
+        case 2:
+        var nom = prompt(" Entrez le nom du contact ");
+        var prenom = prompt(" Entrez le prénom du contact ");
+        contacts.push(nom+" "+prenom);
+        console.log("le nouveau contact a été ajouté ");
+        break;
+        case 0:
+        console.log("Au revoir");
+        break;
+      default: console.log("erreur de saisie");
+      }
+
+    } while (userVal);

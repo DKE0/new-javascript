@@ -24,11 +24,11 @@ switch(jour)
     case "lundi":
         console.log(" demain nous seront " + jours[1]);
         break;
-        
+
     case "mardi":
         console.log(" demain nous seront " + jours[2]);
         break;
-        
+
     case "mercredi":
         console.log(" demain nous seront " + jours[3]);
         break;
@@ -44,11 +44,11 @@ switch(jour)
     case "dimanche":
         console.log(" demain nous seront " + jours[0]);
         break;
-        
+
 }
 
 /*
- 
+
  var nombre = Number(prompt("Entrez un nombre :"));
  if (isNaN(nombre))
  {
@@ -74,11 +74,11 @@ switch(jour)
     case "lundi":
         console.log(" demain nous seront " + jours[1]);
         break;
-        
+
     case "mardi":
         console.log(" demain nous seront " + jours[2]);
         break;
-        
+
     case "mercredi":
         console.log(" demain nous seront " + jours[3]);
         break;
@@ -94,7 +94,7 @@ switch(jour)
     case "dimanche":
         console.log(" demain nous seront " + jours[0]);
         break;
-        
+
 }
 
 // program to find the next time on second level
@@ -125,7 +125,7 @@ else {
 if (minute === 59)
 {
     heure2 = heure + 1;
-    
+
     if (heure2 === 24)
     {
         heure2 = 0;
@@ -169,13 +169,8 @@ function NumberCheck(input)
         return NaN;
     }
     else return input;
-    
+
 }
-
-
-
-
-
 
 // NE PAS MODIFIER OU SUPPRIMER LES LIGNES CI-DESSOUS
 // COMPLETEZ LE PROGRAMME UNIQUEMENT APRES LE TODO
@@ -202,7 +197,7 @@ while((tentative<6) && (win==false))
         nbUtil = Number(prompt(" Entrez un nombre "));
     }
     while (isNaN(nbUtil)) ;
-    
+
     if (nbUtil < solution ) console.log(nbUtil + " est trop petit ");
     if (nbUtil > solution ) console.log(nbUtil + " est trop grand ");
     if (nbUtil === solution) {
@@ -224,12 +219,12 @@ while (isNaN(nbUtil)) ;*/
      nom:"Aurora",
      sante:150,
      force:25,
-    
+
 decrire: function(){
     var description = this.nom + " a " + this.sante + " points de vie " + this.force + " en force";
     return description;
 }
-    
+
 };
 
 console.log(perso.decrire());
@@ -248,15 +243,15 @@ titulaire: "Alex",
     crediter : function(nbUtil) {
         this.solde+=nbUtil;
     },
-    
+
 debiter: function (nbUtil) {
     this.solde -=nbUtil;
 },
-    
+
 decrire: function(){
     console.log("Titulaire : " + this.titulaire + " solde : " + this.solde);
 }
-    
+
 }
 
 do
@@ -277,28 +272,28 @@ compte.decrire();
 // retour sur le jeu de role
 
 var perso = {
-    
+
 nom: "Aurora",
-    
+
 sante: 150,
-    
+
 force: 25,
-    
+
 xp: 0,
-    
+
     // Renvoie la description du personnage
-    
+
 decrire: function () {
-    
+
     var description = this.nom + " a " + this.sante + " points de vie, " +
-    
+
     this.force + " en force et " + this.xp + " points d'expérience";
-    
+
     return description;
-    
+
 }
-    
-    
+
+
 };
 
 console.log(perso.decrire());
@@ -330,21 +325,21 @@ unAutreObjet.b = 4;
 console.log(unAutreObjet.b);
 
 var Personnage = {
-    
+
 // Initialise le personnage
-    
+
 initPerso: function (nom, sante, force) {
-    
+
     this.nom = nom;
-    
+
     this.sante = sante;
-    
+
     this.force = force;
-    
+
 }
-    
+
     // Attaque un personnage cible
-    
+
 attaquer: function(cible)
     {
         if (this.sante > 0)
@@ -359,7 +354,7 @@ attaquer: function(cible)
             }
         } else console.log(this.nom + " ne peut pas attaquer : il est mort...");
     }
-    
+
 };
 
 var joueur = Object.create(Personnage);
@@ -372,9 +367,9 @@ joueur.initJoueur = function(nom, sante, force){
 };
 joueur.decrire =  function () {
     var description = this.nom + " a " + this.sante + " points de vie, " +
-    
+
     this.force + " en force et " + this.xp + " points d'expérience";
-    
+
     return description;
 };
 
@@ -425,6 +420,3 @@ joueur2.combattre(monstre);
 console.log(joueur1.decrire());
 
 console.log(joueur2.decrire());
-
-
-var

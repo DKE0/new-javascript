@@ -28,7 +28,7 @@ var area = ( function () {
   return width * height;
 }());
 
-// obejct
+// obejct creation with literal Notation
 var hotel = {
   name: 'Ibis',
   rooms: 40,
@@ -40,6 +40,30 @@ var hotel = {
     return this.rooms - this.booked;
   }
 };
+// object creation with constructor notation
+
+var  hotel = new Object(); // we create an empty object
+// Next we add properties and Methods using dot notation
+hotel.name = 'Tripadvisor';
+hotel.rooms =  40;
+hotel.booked = 25;
+hotel.checkAvailability =  function () {
+  return this.rooms - this.booked;
+};
+
+// create object then add, then add properties and Methods
+
+// Litteral Notation
+
+var hotel = {}
+
+hotel.name = 'Quay';
+hotel.rooms = 40;
+hotel.booked = 25;
+hotel.checkAvailability =  function () {
+  return this.rooms - this.booked;
+};
+
 
 // object acess method
 
@@ -52,3 +76,39 @@ var hotelName =  hotel['name'];
 
 // the previous notation is used most commonly when
 // A variable is being used in place of property name.
+
+// Updating an object using dot syntax
+
+hotel.name = 'Park';
+
+// Updating an object using barcket syntax (only Available for property)
+
+hotel['name'] = 'Park';
+
+// to delete a property , we can use the delete keyword
+
+delete hotel.name;
+
+// to clear the value of a property, you could set it to blank string
+
+hotel.name='';
+
+// Creating Many objects (constructor Notation)
+
+function Hotel (name, rooms, booked)
+{
+  this.name = name;
+  this.rooms = rooms;
+  this.booked =  booked;
+
+  this.checkAvailability = function(){
+    return this.rooms - this.booked;
+  };
+}
+
+// note that here we use semicolon
+
+// Now we can create instances of the object using the constructor function.
+
+var quayHotel = new Hotel('Quay', 40, 25);
+var parkHotel = new Hotel('Park', 120, 77);

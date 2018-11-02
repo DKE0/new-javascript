@@ -12,7 +12,7 @@ function getSize(width, height, depth)
   var area = width * height;
   var volume = width * height * depth;
   var sizes = [area,volume];
-  return sizes
+  return sizes;
 }
 
 //wow here operates the magic
@@ -51,7 +51,7 @@ hotel.checkAvailability =  function () {
   return this.rooms - this.booked;
 };
 
-// create object then add, then add properties and Methods
+// create object then add, properties and Methods
 
 // Litteral Notation
 
@@ -112,3 +112,42 @@ function Hotel (name, rooms, booked)
 
 var quayHotel = new Hotel('Quay', 40, 25);
 var parkHotel = new Hotel('Park', 120, 77);
+
+// A FUNCTION IN GLOBAL SCOPE
+
+// The default object in the Global context is the window objects
+// so when this is used inside a function in the global context it refers to the window object.
+
+function windowSize()
+{
+  var width = this.innerWidth;
+  var height = this.innerHeight;
+  return [height,width];
+}
+
+// GLOBAL VARIABLES
+
+//All global variables also become properties of the
+//window object. so when a function is in the global
+//context, you can access global variables using the
+//window object, as well as its other properties.
+
+var width = 600;
+var shape = {width:300};
+
+var showWidth = function(){
+  document.write(this.width);
+};
+
+showWidth();
+
+// We have 3 Objet model :
+
+// GLOBAL javascript object Model deal with things
+// like Date times and maths
+
+// Browser object Model represent The current browser
+// Windows or Tab and deal with things like browser
+// history and the device's screen
+
+// document Obejct Model (you already what it's)

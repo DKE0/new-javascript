@@ -151,3 +151,8 @@ showWidth();
 // history and the device's screen
 
 // document Obejct Model (you already what it's)
+
+// the best way to generate a ramdon whole number
+// between 1 and 10
+
+// var ramdomNum = Math.floor((Math.random()*10)+1);
